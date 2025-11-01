@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI FACE</title>
+    <style>
+	div.at-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+	}
+	.at-item {
+		color: #3079ed; font-weight:bold; font-size:3em;
+		
+		animation-name: focus-in-zoomout;
+		animation-duration: 1s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-fill-mode: none;
+			
+		/* shorthand
+		animation: focus-in-zoomout 1s linear 0s 1 normal none;*/
+	}
+	@keyframes focus-in-zoomout {
+			
+		0% {
+			letter-spacing:1em;
+			transform:translateY(300px);
+			filter:blur(12px);
+			opacity:0;
+		}
+		100% {
+			transform:translateY(0px);
+			filter:blur(0);
+			opacity:1;
+		}
+	}
+    img{
+        width:100px;
+        height: 100px;
+        border-radius: 40%;
+        margin-left: -50px;
+    }
+    .content::first-child {
+          margin-left:50px;
+          margin-top:100px;
+    }
+    img:hover{
+        transform: scale(1.5);
+    }
+    </style>
+</head>
+<body>
+    <div class='at-container'>
+	      <div class='at-item' >Đại học UEH</div>
+    </div>
+       <div class="content">
+        <img src="./img/uifaces-cartoon-avatar.jpg" alt="Thành viên 1" class="avata">
+        <img src="./img/uifaces-human-avatar (1).jpg" alt="Thành viên 2" class="avata">
+        <img src="./img/uifaces-human-avatar.jpg" alt="Thành viên 3" class="avata">
+       </div>
+</body>
+</html>
