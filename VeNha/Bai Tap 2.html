@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Original Hover Effects – Bài làm</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #2c3e50;
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      color: #fff;
+    }
+
+    /* Khung chung cho tất cả ví dụ */
+    .view {
+      width: 300px;
+      height: 200px;
+      margin: 15px;
+      float: left;
+      border: 5px solid #fff;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      cursor: default;
+      box-shadow: 0 0 10px rgba(0,0,0,.5);
+    }
+
+    .view img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .view .mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .view h2 {
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .view p {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .view a.info {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    /* a) VÍ DỤ 1 */
+
+    /* Trạng thái ban đầu */
+    .view-first img {
+      transition: all 0.2s linear;
+    }
+
+    .view-first .mask {
+      opacity: 0;
+      /* màu nền: xanh nhạt */
+      background-color: rgba(173, 216, 230, 0.7);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .view-first h2,
+    .view-first p,
+    .view-first a.info {
+      opacity: 0;
+      /* lệch trái – sẽ chạy từ trái sang phải */
+      transform: translateX(-60px);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Khi hover */
+    .view-first:hover img {
+      transform: scale(1.1);
+    }
+
+    .view-first:hover .mask {
+      opacity: 1;
+    }
+
+    .view-first:hover h2,
+    .view-first:hover p,
+    .view-first:hover a.info {
+      opacity: 1;
+      transform: translateX(0); /* chạy từ trái sang phải về vị trí chuẩn */
+    }
+
+    .view-first:hover p {
+      transition-delay: 0.1s;
+    }
+    .view-first:hover a.info {
+      transition-delay: 0.2s;
+    }
+
+    /* b) VÍ DỤ 7 */
+
+    .view-seventh {
+      perspective: 800px; /* cho cảm giác xoay 3D nhẹ */
+    }
+
+    .view-seventh img {
+      transition: transform 0.6s ease-out;
+      transform-origin: center;
+      opacity: 1; /* luôn hiện – sau hiệu ứng vẫn là hình người mẫu */
+    }
+
+    .view-seventh .mask {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: rotateY(-90deg);
+      transition: all 0.6s ease-out;
+    }
+
+    .view-seventh h2,
+    .view-seventh p,
+    .view-seventh a.info {
+      opacity: 0;
+      transform: rotateY(-90deg);
+      transition: all 0.6s ease-out;
+    }
+
+    /* Hover: hình + nội dung cùng xoay giống nhau */
+    .view-seventh:hover img {
+      transform: rotateY(360deg); /* xoay tròn, vẫn là hình người mẫu */
+    }
+
+    .view-seventh:hover .mask {
+      opacity: 1;
+      transform: rotateY(0deg);
+    }
+
+    .view-seventh:hover h2,
+    .view-seventh:hover p,
+    .view-seventh:hover a.info {
+      opacity: 1;
+      transform: rotateY(0deg);
+    }
+
+    .view-seventh:hover h2 { transition-delay: 0.2s; }
+    .view-seventh:hover p  { transition-delay: 0.3s; }
+    .view-seventh:hover a.info { transition-delay: 0.4s; }
+
+    /* c) HIỆU ỨNG TỰ THIẾT KẾ */
+
+    .view-custom {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border: 4px solid #fff;
+  margin: 15px;
+}
+.view-custom img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+/* Lớp phủ trắng mờ */
+.view-custom .mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Text ban đầu ẩn, trượt từ dưới lên */
+.view-custom h2, .view-customp {
+  color: #222;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+/* Khi hover */
+.view-custom:hover img {
+  transform: scale(1.05);
+}
+
+.view-custom:hover .mask {
+  opacity: 1;
+}
+
+.view-custom:hover h2, .view-simple:hover p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+   
+  </style>
+</head>
+<body>
+    <!-- a) Ví dụ 1 -->
+    <div class="view view-first">
+      <img src="https://images.viblo.asia/b4d73d0d-a6b3-4f84-9d52-0fa5002d5ed2.jpg" alt="Ví dụ 1">
+      <div class="mask">
+        <h2>Hover Style #1</h2>
+        <p>Hiệu ứng nền xanh nhạt, text chạy từ trái sang phải.</p>
+        <a href="#" class="info">Read More</a>
+      </div>
+    </div>
+
+    <!-- b) Ví dụ 7 -->
+    <div class="view view-seventh">
+      <img src="https://images.viblo.asia/b4d73d0d-a6b3-4f84-9d52-0fa5002d5ed2.jpg" alt="Ví dụ 7">
+      <div class="mask">
+        <h2>Hover Style #7</h2>
+        <p>Ảnh người mẫu xoay, text xoay cùng, ảnh luôn giữ lại sau hiệu ứng.</p>
+        <a href="#" class="info">Read More</a>
+      </div>
+    </div>
+
+    <!-- c) Hiệu ứng tự thiết kế -->
+    <div class="view view-custom">
+      <img src="https://images.viblo.asia/b4d73d0d-a6b3-4f84-9d52-0fa5002d5ed2.jpg" alt="Ví dụ">
+      <div class="mask">
+        <h2>Custom Hover</h2>
+        <p>Ảnh zoom,nền trắng, tiêu đề và nút trượt từ dưới lên.</p>
+        <a href="#" class="info">Chi tiết</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
