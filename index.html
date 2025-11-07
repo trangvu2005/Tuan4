@@ -4,83 +4,128 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mục Lục Bài Tập - Vũ Thị Yến Trang</title>
+
+
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background: white;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #a2d9ff, #fce1ec);
   margin: 0;
   padding: 0;
   color: #333;
-}
-.container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #dde3e4;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  text-align: center;
+  animation: fadeIn 1.2s ease-in;
 }
 
-/* Thông tin cá nhân */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.container {
+  max-width: 850px;
+  margin: 50px auto;
+  padding: 40px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  text-align: center;
+  animation: zoomIn 1s ease;
+}
+
+/* Profile */
 .profile img {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
+  border: 5px solid #ff4f81;
   object-fit: cover;
-  border: 4px solid #d74f37;
-  margin-bottom: 15px;
+  animation: heartBeat 2.5s ease-in-out infinite;
 }
 .profile h1 {
-  margin: 5px 0;
-  font-size: 1.8em;
+  margin: 12px 0 5px;
+  font-size: 1.9em;
+  color: #ff4f81;
+  animation: fadeInDown 1s;
 }
 .profile p {
-  margin: 4px 0 10px;
   color: #666;
+  margin-bottom: 8px;
+  animation: fadeInUp 1s;
 }
 .social a {
-  color: red;
+  color: #ff4f81;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
 }
 .social a:hover {
-  text-decoration: underline;
+  color: #ff3366;
+  text-shadow: 0 0 10px #ff4f81;
 }
 
-/* Mục lục bài tập */
+/* Tiêu đề */
 h2 {
-  color: red;
-  font-size: 1.5em;
-  margin: 30px 0 15px;
+  color: #ff3366;
+  font-size: 1.6em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  animation: fadeInLeft 1s;
 }
+
+/* Danh sách bài tập */
 ul {
   list-style: none;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
+  gap: 20px;
 }
+
 li {
-  background: #f0f4ff;
-  padding: 12px;
-  border-radius: 8px;
-  transition: 0.3s;
+  background: linear-gradient(135deg, #fff, #e9f0ff);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+  animation: fadeInUp 1s;
 }
+
 li:hover {
-  background: #dbe8ff;
-  transform: translateY(-3px);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255,79,129,0.4);
+  background: linear-gradient(135deg, #ffe9f0, #f0f7ff);
 }
+
+/* Liên kết */
 a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
+  font-size: 1.1em;
+  display: block;
+}
+a:hover {
+  color: #ff4f81;
+  text-shadow: 0 0 8px rgba(255,79,129,0.5);
+}
+
+/* Hiệu ứng chữ nhấp nháy nhẹ */
+@keyframes glowText {
+  0% { text-shadow: 0 0 5px #fff, 0 0 15px #ff4f81; }
+  50% { text-shadow: 0 0 20px #ff80aa, 0 0 30px #ff4f81; }
+  100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff4f81; }
+}
+.profile h1:hover {
+  animation: glowText 1.2s ease-in-out infinite alternate;
 }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="container animate__animated animate__zoomIn">
 
   <div class="profile">
     <img src="https://i.pinimg.com/736x/f8/45/68/f8456800ac55a50acda33ea6b9267e54.jpg" alt="Ảnh Vũ Thị Yến Trang">
@@ -91,15 +136,15 @@ a {
     </div>
   </div>
 
-  <h2>Bài Tập VD</h2>
+  <h2 class="animate__animated animate__fadeInLeft"> Mục Lục Bài Tập</h2>
   <ul>
-    <li><a href="VeNha/Vidu1.html" target="_blank">Ví dụ 1</a></li>
-    <li><a href="VeNha/vidu2.html" target="_blank">Ví dụ 2</a></li>
-    <li><a href="VeNha/Vidu3.html" target="_blank">Ví dụ 3</a></li>
-    
+    <li class="animate__animated animate__fadeInUp"><a href="VeNha/Bai Tap 1.html" target="_blank">Bài 1</a></li>
+    <li class="animate__animated animate__fadeInUp animate__delay-1s"><a href="VeNha/Bai Tap 2.html" target="_blank">Bài 2</a></li>
+    <li class="animate__animated animate__fadeInUp animate__delay-2s"><a href="VeNha/Bai Tap 3.html" target="_blank">Bài 3</a></li>
   </ul>
 
 </div>
 
 </body>
 </html>
+
